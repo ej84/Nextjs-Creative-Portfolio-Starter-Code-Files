@@ -5,7 +5,7 @@ const ItemLayout = ({ children, className }) => {
   return (
     <div
       className={clsx(
-        "custom-bg p-8 rounded-xl flex items-center justify-center space-y-8",
+        "custom-bg p-6 sm:p-8 rounded-xl flex items-center justify-center space-y-8",
         className
       )}
     >
@@ -38,18 +38,24 @@ const AboutDetails = () => {
             spells and technologies to shape the future of the web.
           </p>
         </ItemLayout>
-        <ItemLayout className={"col-span-4 text-accent"}>
-          <p className="font-semibold w-full text-left text-5xl">
+        <ItemLayout
+          className={"col-span-full xs:col-span-6 lg:col-span-4 text-accent"}
+        >
+          <p className="font-semibold w-full text-left text-2xl sm:text-5xl">
             25+ <sub className="font-semibold text-base">clients</sub>
           </p>
         </ItemLayout>
-        <ItemLayout className={"col-span-4 text-accent"}>
-          <p className="font-semibold w-full text-left text-5xl">
+        <ItemLayout
+          className={"col-span-full xs:col-span-6 lg:col-span-4 text-accent"}
+        >
+          <p className="font-semibold w-full text-left text-2xl sm:text-5xl">
             4+{" "}
             <sub className="font-semibold text-base">years of experience</sub>
           </p>
         </ItemLayout>
-        <ItemLayout className={"col-span-4 !p-0"}>
+        <ItemLayout
+          className={"col-span-full sm:col-span-6 md:col-span-4 !p-0"}
+        >
           <img
             src="https://github-readme-stats.vercel.app/api/top-langs?username=codebucks27&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false"
             className="w-full h-auto"
@@ -57,7 +63,7 @@ const AboutDetails = () => {
             loading="lazy"
           />
         </ItemLayout>
-        <ItemLayout className={"col-span-8 !p-0"}>
+        <ItemLayout className={"col-span-full md:col-span-8 !p-0"}>
           <img
             src="https://github-readme-stats.vercel.app/api?username=codebucks27&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false"
             className="w-full h-auto"
