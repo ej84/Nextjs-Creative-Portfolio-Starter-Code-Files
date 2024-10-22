@@ -4,6 +4,17 @@ import React from "react";
 import NavButton from "./NavButton";
 import useScreenSize from "../hooks/useScreenSize";
 import ResponsiveComponent from "../ResponsiveComponent";
+import { motion } from "framer-motion";
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+    },
+  },
+};
 
 const Navigation = () => {
   // Set Navigation Angle
@@ -18,7 +29,12 @@ const Navigation = () => {
       <ResponsiveComponent>
         {({ size }) => {
           return size && size >= 480 ? (
-            <div className="w-max flex items-center justify-center relative hover:pause animate-spin-slow group">
+            <motion.div
+              variants={container}
+              initial="hidden"
+              animate="show"
+              className="w-max flex items-center justify-center relative hover:pause animate-spin-slow group"
+            >
               {BtnList.map((btn, index) => {
                 const angleRad = (index * angleIncrement * Math.PI) / 180;
                 const radius = isLarge
@@ -32,15 +48,25 @@ const Navigation = () => {
                 //console.log(angleRad, x, y, index);
                 return <NavButton key={btn.label} x={x} y={y} {...btn} />;
               })}
-            </div>
+            </motion.div>
           ) : (
             <>
-              <div className="w-full px-2.5 xs:p-0 xs:w-max flex flex-col space-y-4 items-start xs:items-center justify-center relative group">
+              <motion.div
+                variants={container}
+                initial="hidden"
+                animate="show"
+                className="w-full px-2.5 xs:p-0 xs:w-max flex flex-col space-y-4 items-start xs:items-center justify-center relative group"
+              >
                 {BtnList.slice(0, BtnList.length / 2).map((btn, index) => {
                   return <NavButton key={btn.label} x={0} y={0} {...btn} />;
                 })}
-              </div>
-              <div className="w-full px-2.5 xs:p-0 xs:w-max flex flex-col space-y-4 items-end xs:items-center justify-center relative group">
+              </motion.div>
+              <motion.div
+                variants={container}
+                initial="hidden"
+                animate="show"
+                className="w-full px-2.5 xs:p-0 xs:w-max flex flex-col space-y-4 items-end xs:items-center justify-center relative group"
+              >
                 {BtnList.slice(BtnList.length / 2, BtnList.length).map(
                   (btn, index) => {
                     return (
@@ -54,7 +80,7 @@ const Navigation = () => {
                     );
                   }
                 )}
-              </div>
+              </motion.div>
             </>
           );
         }}
